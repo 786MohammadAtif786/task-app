@@ -1,0 +1,26 @@
+version: '3'
+services:
+  app:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - /app:/home/atif/Public/code/Atif/CodeWithAtif/nodejs/mongo-Blog/
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+    environment:
+      - #MONGO_URI=mongodb+srv://matif81999:<your password>@cluster0.s5wg59i.mongodb.net/taskmanager
+      - MONGO_URI: mongodb://localhost:27017/taksmanager
+
+  mongo:
+    image: mongo
+     ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
+  app-data:
